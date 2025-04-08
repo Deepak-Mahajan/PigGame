@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dice Game Instructions</title>
+  <link rel="stylesheet" href="colorful_styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>How to Play the Dice Game</h1>
+    <ol>
+      <li><strong>Roll the Dice:</strong> Click "Roll Dice" to generate a number (1–6).<br>
+      If it’s <strong>1</strong>, you lose your current score and your turn ends.<br>
+      Otherwise, the number is added to your current score.</li>
+
+      <li><strong>Hold the Score:</strong> Click "Hold" to add your current score to your total score and pass the turn.</li>
+
+      <li><strong>Winning the Game:</strong> The first player to reach <strong>100 points</strong> wins!</li>
+
+      <li><strong>Reset Game:</strong> Click "New Game" to restart with zero scores and Player 1 starts again.</li>
+    </ol>
+
+    <p class="tip">Tip: Play smart! Holding at the right time can save you from rolling a 1!</p>
+
+    <form id="gameForm">
+      <div class="form-group">
+        <label for="player1">Player 1 Name:</label>
+        <input type="text" id="player1" name="player1" required>
+      </div>
+      <div class="form-group">
+        <label for="player2">Player 2 Name:</label>
+        <input type="text" id="player2" name="player2" required>
+      </div>
+      <div class="form-group">
+        <label for="targetScore">Target Score:</label>
+        <input type="number" id="targetScore" name="targetScore" value="100" min="10" required>
+      </div>
+    </form>
+
+    <a href="#" class="btn" onclick="startGame()">Start Game</a>
+  </div>
+
+  <script>
+    function startGame() {
+      const p1 = document.getElementById('player1').value;
+      const p2 = document.getElementById('player2').value;
+      const score = document.getElementById('targetScore').value;
+
+      if (p1 && p2 && score) {
+        localStorage.setItem('player1', p1);
+        localStorage.setItem('player2', p2);
+        localStorage.setItem('targetScore', score);
+        window.location.href = 'game.html'; // Replace with actual game file
+      } else {
+        alert("Please fill in all fields.");
+      }
+    }
+  </script>
+</body>
+</html>
